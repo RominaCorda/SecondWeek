@@ -9,10 +9,10 @@
     <groupId>com.virtualpairprogrammers</groupId>
 
     <!--  ArtifactId - the name of this project -->
-    <artifactId>bookstore</artifactId>
+    <artifactId>gommastore</artifactId>
 
     <!--  The current version -->
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
 
     <!--  How are we packaging - jar, war, ear -->
     <packaging>war</packaging>
@@ -21,7 +21,7 @@
     <name>Hartley's Bookstore</name>
 
     <!--  The website for the project -->
-    <url>http://bookstore.virtualpairprogrammers.com</url>
+    <url>http://gommastore.virtualpairprogrammers.com</url>
 
     <!--  And now, a list of Maven projects that we depend upon -->
     <dependencies>
@@ -47,41 +47,27 @@
             <version>3.8.1</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>5.0.2.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.44</version>
+        </dependency>
     </dependencies>
     <build>
-        <finalName>bookstore</finalName>
+        <finalName>gommastore</finalName>
         <plugins>
             <plugin>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>2.6</version>
-                <executions>
-                    <execution>
-                        <id>copy-resources</id>
-                        <!-- here the phase you need -->
-                        <phase>validate</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>apache-tomcat-8.5.24/webapps</outputDirectory>
-                            <resources>
-                                <resource>
-                                    <directory>target</directory>
-                                    <includes>
-                                        <include>bookstore.war</include>
-                                    </includes>
-                                    <filtering>true</filtering>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
+			    <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>2.4</version>
                 <configuration>
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                    <warName>gommastore</warName>
+					<outputDirectory>apache-tomcat-8.5.24/webapps</outputDirectory>
                 </configuration>
             </plugin>
             <plugin>
@@ -91,7 +77,7 @@
                 <configuration>
                     <url>http://localhost:8080/manager</url>
                     <server>TomcatServer</server>
-                    <path>/bookstore</path>
+                    <path>/gommastore</path>
                 </configuration>
             </plugin>
         </plugins>
