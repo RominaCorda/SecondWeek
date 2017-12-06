@@ -15,16 +15,15 @@ public class HomeServlet extends HttpServlet {
                         HttpServletResponse response)
             throws ServletException,IOException
     {
-
         LoginService loginService= new LoginService();
         String result;
         HttpSession sess=request.getSession(true);
-        String firstName= (String) sess.getAttribute("firstName");
-        String role= (String) sess.getAttribute("role");
+        //String firstName= (String) sess.getAttribute("firstName");
+        //String role= (String) sess.getAttribute("role");
 
-        if((firstName==null) && (role==null)) {//Controlla se si è loggatti
+        /*if((firstName==null) && (role==null)) {//Controlla se si è loggatti
             //Legge i dati inseriti da input
-            String userName = request.getParameter("userName");
+            String userName = request.getParameter("username");
             String password = request.getParameter("password");
 
             result = loginService.login(userName, password);
@@ -33,15 +32,27 @@ public class HomeServlet extends HttpServlet {
                 sess.setAttribute("firstname", part[0]);
                 sess.setAttribute("role", part[1]);
                 //Manca chiamata alla JSP Homeview dove è presente il menu dell'user o dell'admin
-                response.sendRedirect("Home.jsp");
+                response.sendRedirect("homeMenu.jsp");
             } else {
                 //Il login non è andato a buon fine e si deve ricaricare la JSP che permette di rimettere}
-                response.sendRedirect("Login.jsp");
+                response.sendRedirect("LoginMenu.jsp");
             }
         }else{//Se si è già loggati si va direttamente al menù
             //Manca chiamata alla JSP Homeview dove è presente il menu dell'user o dell'admin
-            response.sendRedirect("Home.jsp");
+            response.sendRedirect("homeMenu.jsp");
+        }*/
+
+        //Codice di prova
+        String userName = request.getParameter("username");
+        String password = request.getParameter("password");
+
+        if(userName.equals("admin")){
+            sess.setAttribute("role", "admin");
+        }else if(userName.equals("user")) {
+            sess.setAttribute("role", "user");
         }
+
+        response.sendRedirect("homeMenu.jsp");
     }
 
 }
