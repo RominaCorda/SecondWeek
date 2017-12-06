@@ -10,29 +10,33 @@ import java.io.IOException;
 public class VehicleServlet extends HttpServlet implements ServletCustom {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException{
+        throws ServletException, IOException
+    {
 
-        int scelta = Integer.parseInt((String)request.getParameter("scelta"));
 
-        switch (scelta) {
-            case 1:response.sendRedirect("InsertVehicle.jsp");
-            break;
-            case 2:response.sendRedirect("AllVehicle");
-            break;
         }
 
-    }
+
 
 
     public void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         int scelta = Integer.parseInt((String)request.getParameter("scelta"));
 
-        switch (scelta) {
-            case 1:response.sendRedirect("InsertVehicle.jsp");
-                break;
-            case 2:response.sendRedirect("AllVehicle");
-                break;
+        switch (scelta)
+        {
+            case 1:
+                {
+                    HttpSession session = request.getSession(true);
+                    session.setAttribute("view","insertVehicle.jsp");
+                    MainDispatcherServlet.getInstance().callView(request,response);
+            }
+            case 2:
+            {
+                HttpSession session = request.getSession(true);
+                session.setAttribute("view","allVehicle.jsp");
+                MainDispatcherServlet.getInstance().callView(request,response);
+            }
         }
     }
 }
