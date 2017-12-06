@@ -39,11 +39,16 @@
 	<servlet>
 	<servlet-name>LoginServlet</servlet-name>
 	<servlet-class>com.virtualpairprogrammers.servlets.LoginServlet</servlet-class>
-</servlet>
+	</servlet>
 
 	<servlet>
 		<servlet-name>HomeServlet</servlet-name>
 		<servlet-class>com.virtualpairprogrammers.servlets.HomeServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>MainDispatcherServlet</servlet-name>
+		<servlet-class>com.virtualpairprogrammers.servlets.MainDispatcherServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
@@ -85,6 +90,11 @@
 	<servlet-mapping>
 		<servlet-name>HomeServlet</servlet-name>
 		<url-pattern>/HomeServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>MainDispatcherServlet</servlet-name>
+		<url-pattern>/MainDispatcherServlet</url-pattern>
 	</servlet-mapping>
 	
 	<session-config>

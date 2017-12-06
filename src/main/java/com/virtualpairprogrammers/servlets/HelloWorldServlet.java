@@ -9,10 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class HelloWorldServlet extends HttpServlet 
+public class HelloWorldServlet extends HttpServlet implements ServletCustom
 {
 	public void service (HttpServletRequest request, 
-			HttpServletResponse response) 
+			HttpServletResponse response)
 			throws ServletException,IOException
 	{
 		PrintWriter out = response.getWriter();
