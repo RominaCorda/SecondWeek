@@ -7,12 +7,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-public class VehicleServlet extends HttpServlet {
+public class VehicleServlet extends HttpServlet implements ServletCustom {
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException{
 
-        HttpSession session = request.getSession(true);
         int scelta = Integer.parseInt((String)request.getParameter("scelta"));
 
         switch (scelta) {
@@ -25,5 +24,15 @@ public class VehicleServlet extends HttpServlet {
     }
 
 
+    public void service(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        int scelta = Integer.parseInt((String)request.getParameter("scelta"));
 
+        switch (scelta) {
+            case 1:response.sendRedirect("InsertVehicle.jsp");
+                break;
+            case 2:response.sendRedirect("AllVehicle");
+                break;
+        }
+    }
 }
