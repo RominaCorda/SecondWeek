@@ -3,6 +3,7 @@ package com.virtualpairprogrammers.dao;
 import com.virtualpairprogrammers.domain.Vehicle;
 
 import com.virtualpairprogrammers.utils.ConnectionSingleton;
+import com.virtualpairprogrammers.utils.GestoreEccezioni;
 //import main.controller.GestoreEccezioni;
 
 import java.sql.*;
@@ -52,7 +53,7 @@ public class VehicleDAO
             return preparedStatement.execute();
         }
         catch (SQLException e) {
-            //GestoreEccezioni.getInstance().gestisciEccezione(e);
+            GestoreEccezioni.getInstance().gestisciEccezione(e);
             e.printStackTrace();
             return false;
         }

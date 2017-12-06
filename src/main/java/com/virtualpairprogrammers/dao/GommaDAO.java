@@ -2,6 +2,7 @@ package com.virtualpairprogrammers.dao;
 
 import com.virtualpairprogrammers.domain.Gomma;
 import com.virtualpairprogrammers.utils.ConnectionSingleton;
+import com.virtualpairprogrammers.utils.GestoreEccezioni;
 
 //import main.controller.GestoreEccezioni;
 
@@ -249,7 +250,7 @@ public class GommaDAO {
             return preparedStatement.execute();
         }
         catch (SQLException e) {
-            //GestoreEccezioni.getInstance().gestisciEccezione(e);
+            GestoreEccezioni.getInstance().gestisciEccezione(e);
             e.printStackTrace();
             return false;
         }

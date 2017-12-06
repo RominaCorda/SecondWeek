@@ -4,6 +4,7 @@ import com.virtualpairprogrammers.domain.User;
 
 //import main.controller.GestoreEccezioni;
 import com.virtualpairprogrammers.utils.ConnectionSingleton;
+import com.virtualpairprogrammers.utils.GestoreEccezioni;
 
 
 import java.sql.*;
@@ -40,7 +41,7 @@ public class UserDAO
             return preparedStatement.execute();
         }
         catch (SQLException e) {
-            //GestoreEccezioni.getInstance().gestisciEccezione(e);
+            GestoreEccezioni.getInstance().gestisciEccezione(e);
             e.printStackTrace();
             return false;
         }

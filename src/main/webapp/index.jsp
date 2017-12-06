@@ -13,17 +13,23 @@
      <form action="LoginServlet" method="get"><br>
      <i>Registrazione nuovo utente</i><input type="radio" name="scelta" value="1"><br>
      <i>Accedi</i><input type="radio" name="scelta" value="2"><br>
-     <input type="submit" name="submit" value="PROSEGUI"><br> -->
+     <input type="submit" name="submit" value="PROSEGUI"><br>
+-->
 
 
 <%
     session.setAttribute("method", "callAction");
-    session.setAttribute("servlet", "HelloWorld");
+    session.setAttribute("servlet", "Login");
+    session.setAttribute("action", "service");
 %>
 <form action = "MainDispatcherServlet" method = "POST">
-    UserName <input type = "text" name "username">
-    Password <input type = "password" name "password">
-    <input type = "submit" value = "submit">
+    <i>Registrazione nuovo utente</i>
+    <input type="radio" name="scelta" value="1"><br>
+     <i>Accedi</i>
+     <input type="radio" name="scelta" value="2"><br>
+           UserName <input type = "text" name "username">
+           Password <input type = "password" name "password">
+      <input type = "submit" value = "submit">
 </form>
 
 </body>

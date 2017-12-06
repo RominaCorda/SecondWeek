@@ -3,6 +3,7 @@ package com.virtualpairprogrammers.dao;
 
 
 import com.virtualpairprogrammers.utils.ConnectionSingleton;
+import com.virtualpairprogrammers.utils.GestoreEccezioni;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -33,7 +34,7 @@ public class LoginDAO {
         }
         catch (SQLException e) {
             e.printStackTrace();
-            //GestoreEccezioni.getInstance().gestisciEccezione(e);
+            GestoreEccezioni.getInstance().gestisciEccezione(e);
             return null;
         }
     }
