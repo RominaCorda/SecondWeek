@@ -10,11 +10,11 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserDao
+public class UserDAO
 {
     private final String QUERY_ALL = "select * from users where role=\"user\"";
     private final String QUERY_INSERT ="INSERT INTO users (idUser,username,password,firstname,lastname,dateofbirth,fiscalcode,businessname,vat,municipality,post,city,address,telephone,role) VALUES (NULL,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
-    public UserDao() {}
+    public UserDAO() {}
 
     public boolean insertUser(User user)
     {
