@@ -17,7 +17,7 @@ public class LoginServlet extends HttpServlet {
 
         switch (scelta) {
 
-            case 1:response.sendRedirect("index.jsp");
+            case 1:response.sendRedirect("displayAllBooks.jsp");
                 break;
             case 2:
                 response.sendRedirect("index.jsp");
