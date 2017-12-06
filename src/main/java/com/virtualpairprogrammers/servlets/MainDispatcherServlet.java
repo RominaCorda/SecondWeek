@@ -14,8 +14,16 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-public class MainDispatcherServlet extends HttpServlet{
+public class MainDispatcherServlet extends HttpServlet
+{
+    private static MainDispatcherServlet instance;
 
+    public static MainDispatcherServlet getInstance() {
+        if (instance == null) {
+            instance = new MainDispatcherServlet();
+        }
+        return instance;
+    }
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
     {

@@ -14,17 +14,6 @@ public class LoginServlet extends HttpServlet implements ServletCustom
             throws ServletException, IOException
     {
 
-        int scelta=Integer.parseInt((String)request.getParameter("scelta"));
-
-        switch (scelta)
-        {
-
-            case 1:response.sendRedirect("SignedUpMenu.jsp");
-                break;
-            case 2:
-                response.sendRedirect("LoginMenu.jsp");
-                break;
-        }
 
 
     }
@@ -36,11 +25,18 @@ public class LoginServlet extends HttpServlet implements ServletCustom
         switch (scelta)
         {
 
-            case 1:response.sendRedirect("SignedUpMenu.jsp");
-                break;
+            case 1:
+            {
+                HttpSession session = request.getSession(true);
+                session.setAttribute("view","SignedUpMenu.jsp");
+                MainDispatcherServlet.getInstance().callView(request,response);
+            }
             case 2:
-                response.sendRedirect("LoginMenu.jsp");
-                break;
+            {
+                HttpSession session = request.getSession(true);
+                session.setAttribute("view","LoginMenu.jsp");
+                MainDispatcherServlet.getInstance().callView(request,response);
+            }
         }
     }
 }
