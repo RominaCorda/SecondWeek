@@ -7,10 +7,10 @@
         <%  String role =((String) session.getAttribute("role"));%>
     </head>
     <body>
-        <%if (role.equals("admin")){%>
-            <h1>Menu ADMIN</h1>
-                <%}else if(role.equals("user")) {%>
-                    <h1>Menu USER</h1>
-                <%}%>
+     <%
+       HttpSession session = request.getSession(true);
+               String firstName= (String)  session.getAttribute("firstName");
+               out.println(firstName);
+     %>
     </body>
 </html>

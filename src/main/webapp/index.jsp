@@ -2,35 +2,40 @@
 <!DOCTYPE html>
 
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-</head>
-
-<body>
-
-<!-- <h1>Contrader Framework</h1>
-     <p><i>Opzioni disponibili</i></p>
-     <form action="LoginServlet" method="get"><br>
-     <i>Registrazione nuovo utente</i><input type="radio" name="scelta" value="1"><br>
-     <i>Accedi</i><input type="radio" name="scelta" value="2"><br>
-     <input type="submit" name="submit" value="PROSEGUI"><br>
--->
-
-
-<%
-    session.setAttribute("method", "callAction");
-    session.setAttribute("servlet", "Login");
-    session.setAttribute("action", "service");
-%>
-<form action = "MainDispatcherServlet" method = "POST">
-    <i>Registrazione nuovo utente</i>
-    <input type="radio" name="scelta" value="1"><br>
-     <i>Accedi</i>
-     <input type="radio" name="scelta" value="2"><br>
-           UserName <input type = "text" name "username">
-           Password <input type = "password" name "password">
-      <input type = "submit" value = "submit">
-</form>
-
-</body>
-</html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	</head>
+	<body background="sfondo.jpg">
+		<%
+           session.setAttribute("method", "callAction");
+           session.setAttribute("servlet", "Login");
+           session.setAttribute("action", "service");
+		%>
+		<div style="width:250px;position:relative;top:300px;left:730px;">
+			<form action="MainDispatcherServlet" method="post">
+				<fieldset>
+				<legend align="center">Welcome project gomma</legend>
+					<table>
+						<tr>
+							<td>Username</td>
+							<td><input type="text" name="user"></td>
+						</tr>
+						<tr>
+							<td>Password</td>
+							<td>
+								<input type="text" name="pwd">
+							</td>
+						<tr align="center">
+							<td>
+								<input type="submit" value="Login" name="bott">
+							</td>
+							<td>
+								<input type="submit" value="Registrati" name="bott">
+							</td>
+						</tr>
+					</table>
+				</fieldset>
+			</form>
+		</div>
+		</body>
+       </html>

@@ -9,50 +9,43 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-public class HomeServlet extends HttpServlet {
+public class HomeServlet extends HttpServlet
+{
+    private LoginService loginService;
+    private String result="";
 
-    public void doPost (HttpServletRequest request,
-                        HttpServletResponse response)
-            throws ServletException,IOException
+    public void service (HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException
     {
-        LoginService loginService= new LoginService();
-        String result;
-        HttpSession sess=request.getSession(true);
-        //String firstName= (String) sess.getAttribute("firstName");
-        //String role= (String) sess.getAttribute("role");
+        HttpSession session = request.getSession(true);
+        String firstName= (String)  session.getAttribute("firstName");
+        String role= (String) session.getAttribute("role");
 
-        /*if((firstName==null) && (role==null)) {//Controlla se si è loggatti
+        if ((request != null)&&(role== null)&&(firstName==null))
+        {//Controlla se si è loggatti
             //Legge i dati inseriti da input
-            String userName = request.getParameter("username");
-            String password = request.getParameter("password");
+
+            String userName = request.getParameter("user");
+            String password = request.getParameter("pwd");
 
             result = loginService.login(userName, password);
             if (result != null) {
                 String[] part = result.split(":");
-                sess.setAttribute("firstname", part[0]);
-                sess.setAttribute("role", part[1]);
+                session.setAttribute("firstname", part[0]);
+                session.setAttribute("role", part[1]);
                 //Manca chiamata alla JSP Homeview dove è presente il menu dell'user o dell'admin
-                response.sendRedirect("homeMenu.jsp");
+                session.setAttribute("view", "homeMenu.jsp");
+                MainDispatcherServlet.getInstance().callView(request, response);
             } else {
                 //Il login non è andato a buon fine e si deve ricaricare la JSP che permette di rimettere}
-                response.sendRedirect("LoginMenu.jsp");
+                session.setAttribute("view", "LoginMenu.jsp");
+                MainDispatcherServlet.getInstance().callView(request, response);
             }
         }else{//Se si è già loggati si va direttamente al menù
             //Manca chiamata alla JSP Homeview dove è presente il menu dell'user o dell'admin
-            response.sendRedirect("homeMenu.jsp");
-        }*/
-
-        //Codice di prova
-        String userName = request.getParameter("username");
-        String password = request.getParameter("password");
-
-        if(userName.equals("admin")){
-            sess.setAttribute("role", "admin");
-        }else if(userName.equals("user")) {
-            sess.setAttribute("role", "user");
+            session.setAttribute("view", "homeMenu.jsp");
+            MainDispatcherServlet.getInstance().callView(request, response);
         }
-
-        response.sendRedirect("homeMenu.jsp");
     }
+
 
 }

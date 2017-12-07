@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.lang.reflect.Method;
 
 public class MainDispatcherServlet extends HttpServlet
@@ -40,7 +41,16 @@ public class MainDispatcherServlet extends HttpServlet
 
     public void callAction(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
     {
+        PrintWriter out=response.getWriter();
         HttpSession session = request.getSession(true);
+
+        //qui eseguo la stampa del valore servlet presente in sessione
+        String servlet=(String)session.getAttribute("servlet");
+        for(int i=0;i<servlet.length();i++)
+        {
+            out.println(servlet.charAt(i));
+        }
+
         HttpServlet oggettoServlet = (HttpServlet) ReflectionUtils.instantiateClass("com.virtualpairprogrammers.servlets." + session.getAttribute("servlet") + "Servlet");
 
         try

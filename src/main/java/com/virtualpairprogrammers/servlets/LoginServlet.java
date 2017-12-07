@@ -20,22 +20,24 @@ public class LoginServlet extends HttpServlet
 
     public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
-        int scelta=Integer.parseInt((String)request.getParameter("scelta"));
+        String scelta=request.getParameter("bott");
 
         switch (scelta)
         {
 
-            case 1:
+            case "Login":
             {
                 HttpSession session = request.getSession(true);
-                session.setAttribute("view","SignedUpMenu.jsp");
-                MainDispatcherServlet.getInstance().callView(request,response);
+                session.setAttribute("servlet","Home");
+                session.setAttribute("role",null);
+                session.setAttribute("firstname",null);
+                MainDispatcherServlet.getInstance().callAction(request,response);
             }
-            case 2:
+            case "Registrati":
             {
-                HttpSession session = request.getSession(true);
-                session.setAttribute("view","LoginMenu.jsp");
-                MainDispatcherServlet.getInstance().callView(request,response);
+                /*HttpSession session = request.getSession(true);
+                session.setAttribute("view","SignedUpMenu.jsp");
+                MainDispatcherServlet.getInstance().callView(request,response);*/
             }
         }
     }
