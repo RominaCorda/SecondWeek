@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-public class LoginServlet extends HttpServlet implements ServletCustom
+public class LoginServlet extends HttpServlet
 {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

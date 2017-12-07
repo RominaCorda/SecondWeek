@@ -41,12 +41,12 @@ public class MainDispatcherServlet extends HttpServlet
     public void callAction(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
     {
         HttpSession session = request.getSession(true);
-        ServletCustom oggettoServlet = (ServletCustom) ReflectionUtils.instantiateClass("com.virtualpairprogrammers.servlets." + session.getAttribute("servlet") + "Servlet");
+        HttpServlet oggettoServlet = (HttpServlet) ReflectionUtils.instantiateClass("com.virtualpairprogrammers.servlets." + session.getAttribute("servlet") + "Servlet");
 
         try
         {
 
-            Method metodo = oggettoServlet.getClass().getMethod((String)session.getAttribute("action"), HttpServletRequest.class, HttpServletResponse.class);
+            Method metodo = oggettoServlet.getClass().getMethod("service", HttpServletRequest.class, HttpServletResponse.class);
             metodo.invoke( oggettoServlet, (HttpServletRequest) request, (HttpServletResponse)response);
         }
         catch (Throwable e) {
