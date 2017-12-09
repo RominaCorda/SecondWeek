@@ -9,19 +9,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-public class HomeServlet extends HttpServlet
-{
+public class HomeServlet extends HttpServlet {
     private LoginService loginService;
-    private String result="";
+    private String result = "";
 
-    public void service (HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException
-    {
+    public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(true);
-        String firstName= (String)  session.getAttribute("firstName");
-        String role= (String) session.getAttribute("role");
+        String firstName = (String) session.getAttribute("firstName");
+        String role = (String) session.getAttribute("role");
 
-        if ((request != null)&&(role== null)&&(firstName==null))
-        {//Controlla se si è loggatti
+        if ((request != null) && (role == null) && (firstName == null)) {//Controlla se si è loggatti
             //Legge i dati inseriti da input
 
             String userName = request.getParameter("user");
@@ -40,7 +37,7 @@ public class HomeServlet extends HttpServlet
                 session.setAttribute("view", "LoginMenu.jsp");
                 MainDispatcherServlet.getInstance().callView(request, response);
             }
-        }else{//Se si è già loggati si va direttamente al menù
+        } else {//Se si è già loggati si va direttamente al menù
             //Manca chiamata alla JSP Homeview dove è presente il menu dell'user o dell'admin
             session.setAttribute("view", "homeMenu.jsp");
             MainDispatcherServlet.getInstance().callView(request, response);
