@@ -1,4 +1,4 @@
-package com.virtualpairprogrammers;
+package com.virtualpairprogrammers.utils;
 
 
 import com.virtualpairprogrammers.dao.GommaDAO;

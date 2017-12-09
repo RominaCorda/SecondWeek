@@ -1,11 +1,14 @@
 package com.virtualpairprogrammers.servlets;
 
+import com.virtualpairprogrammers.services.LoginService;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 public class LoginServlet extends HttpServlet
 {
@@ -27,11 +30,12 @@ public class LoginServlet extends HttpServlet
 
             case "Login":
             {
+
                 HttpSession session = request.getSession(true);
                 session.setAttribute("servlet","Home");
                 session.setAttribute("role",null);
                 session.setAttribute("firstname",null);
-                MainDispatcherServlet.getInstance().callAction(request,response);
+                MainDispatcherServlet.getInstance(request).callAction(request,response);
             }
             case "Registrati":
             {

@@ -19,15 +19,22 @@ public class MainDispatcherServlet extends HttpServlet
 {
     private static MainDispatcherServlet instance;
 
-    public static MainDispatcherServlet getInstance() {
-        if (instance == null) {
+    public static MainDispatcherServlet getInstance(HttpServletRequest request)
+    {
+        HttpSession session = request.getSession(true);
+        instance=(MainDispatcherServlet)session.getAttribute("instance");
+
+        if (instance == null)
+        {
             instance = new MainDispatcherServlet();
+            session.setAttribute("instance",instance);
         }
         return instance;
     }
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException
     {
+        this.getInstance(request);
         Method method;
         HttpSession session = request.getSession(true);
         String methodToCall = (String)session.getAttribute("method");
@@ -41,15 +48,7 @@ public class MainDispatcherServlet extends HttpServlet
 
     public void callAction(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
     {
-        PrintWriter out=response.getWriter();
         HttpSession session = request.getSession(true);
-
-        //qui eseguo la stampa del valore servlet presente in sessione
-        String servlet=(String)session.getAttribute("servlet");
-        for(int i=0;i<servlet.length();i++)
-        {
-            out.println(servlet.charAt(i));
-        }
 
         HttpServlet oggettoServlet = (HttpServlet) ReflectionUtils.instantiateClass("com.virtualpairprogrammers.servlets." + session.getAttribute("servlet") + "Servlet");
 

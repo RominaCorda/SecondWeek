@@ -1,4 +1,3 @@
-<%@page session="true"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -78,9 +77,8 @@
                 <div>
                 <%}else if(role.equals("user")) {%>
                     <%
-                        HttpSession session = request.getSession(true);
-                            String firstName= (String)  session.getAttribute("firstName");
-                            out.println(firstName);
+                            String firstname= (String)  session.getAttribute("firstname");
+                             response.getWriter().println(""+role+" "+firstname);
                     %>
                     <h1>MENU USER</h1>
                         <div style="width: 400px">
@@ -259,11 +257,12 @@
                                                     <input type="submit" value="CONFERMA">
                                                 </td>
                                             </tr>
-                                    <table>
+                                    </table>
                                 </fieldset>
                             </form>
                         </div>
                 <%}%>
             <script src="subMenu.js"></script>
-    </body>
+                </body>
+
 </html>

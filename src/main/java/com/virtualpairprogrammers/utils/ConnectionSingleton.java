@@ -5,8 +5,10 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.io.Reader;
 import java.sql.Connection;
 import java.util.Properties;
+
 
 
 public class ConnectionSingleton {
@@ -22,16 +24,24 @@ public class ConnectionSingleton {
     public static Connection getInstance() {
         if (connection == null) {
             try {
-                Properties properties = new Properties();
-                InputStream inputStream = new FileInputStream("config.properties");
-                properties.load(inputStream);
-                String vendor = properties.getProperty("db.vendor");
+               Properties properties = new Properties();
+                /*InputStream inputStream = new FileInputStream("config.properties");
+                properties.load(inputStream);*/
+
+                String vendor="mysql";
+                String driver="com.mysql.jdbc.Driver";
+                String host="127.0.0.1";
+                String port="3306";
+                String dbName="contrader";
+                String username="root";
+                String password ="root";
+                /*String vendor = properties.getProperty("db.vendor");
                 String driver = properties.getProperty("db.driver");
                 String host = properties.getProperty("db.host");
                 String port = properties.getProperty("db.port");
                 String dbName = properties.getProperty("db.name");
                 String username = properties.getProperty("db.username");
-                String password = properties.getProperty("db.password");
+                String password = properties.getProperty("db.password");*/
                 Class c = Class.forName(driver);
                 System.out.println("Ho caricato: " + c.getName());
                 String myUrl = "jdbc:" + vendor + "://" + host + ":" + port + "/" + dbName;

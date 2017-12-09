@@ -29,13 +29,13 @@ public class VehicleServlet extends HttpServlet {
                 {
                     HttpSession session = request.getSession(true);
                     session.setAttribute("view","insertVehicle.jsp");
-                    MainDispatcherServlet.getInstance().callView(request,response);
+                    //MainDispatcherServlet.getInstance().callView(request,response);
             }
             case 2:
             {
                 HttpSession session = request.getSession(true);
                 session.setAttribute("view","allVehicle.jsp");
-                MainDispatcherServlet.getInstance().callView(request,response);
+                //MainDispatcherServlet.getInstance().callView(request,response);
             }
         }
     }
