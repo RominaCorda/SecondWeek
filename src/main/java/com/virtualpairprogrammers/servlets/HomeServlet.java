@@ -18,7 +18,7 @@ public class HomeServlet extends HttpServlet
 
     public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(true);
-        String firstName = (String) session.getAttribute("firstName");
+        String firstName = (String) session.getAttribute("firstname");
         String role = (String) session.getAttribute("role");
 
 
