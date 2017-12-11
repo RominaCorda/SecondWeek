@@ -65,17 +65,17 @@
                    <table style="width: 300px">
                        <tr>
                            <td>
-                               <input type="radio" name="visualizza" value="1"/>Visualizza gomme disponibili </br>
+                               <input type="radio" name="visualizza" value="1"/>Visualizza gomme disponibili
                            </td>
                        </tr>
                        <tr>
                            <td>
-                               <input type="radio" name="visualizza" value="2"/>Visualizza utenti registrati </br>
+                               <input type="radio" name="visualizza" value="2"/>Visualizza utenti registrati
                            </td>
                        </tr>
                        <tr>
                            <td>
-                               <input type="radio" name="visualizza" value="3"/>Visualizza veicoli registrati </br>
+                               <input type="radio" name="visualizza" value="3"/>Visualizza veicoli registrati
                            </td>
                        </tr>
                        <tr>
@@ -106,7 +106,7 @@
                        </tr>
                        <tr>
                            <td>
-                               <input type="radio" name="visualizza" value="3" onclick="myFunction3()"/>Cerca brand gomma per il tuo veicolo</br>
+                               <input type="radio" name="visualizza" value="3" onclick="myFunction3()"/>Cerca brand gomma per il tuo veicolo
                            </td>
                        </tr>
                    </table>
