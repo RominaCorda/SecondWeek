@@ -49,7 +49,62 @@ public class MainDispatcherServlet extends HttpServlet
     public void callAction(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
     {
         HttpSession session = request.getSession(true);
+        Integer sel = Integer.parseInt(request.getParameter("sel"));
 
+        String bott = request.getParameter("bott");
+        if (bott.equals("Logout")) {
+            session.setAttribute("servlet", "Logout");
+        }
+        else if(bott.equals("Registrati")){
+            session.setAttribute("servlet", "User");
+            session.setAttribute("choice",4);
+        }
+        else if(bott.equals("Login")){
+            session.setAttribute("servlet", "Login");
+        }
+        else {
+
+            switch (sel) {
+
+                case 0: break;
+
+                case 1:
+                    session.setAttribute("servlet", "Gomma");
+                    session.setAttribute("choice",1);
+                    break;
+
+                case 2:
+                    session.setAttribute("servlet", "Vehicle");
+                    break;
+
+                case 3 :
+                    session.setAttribute("servlet", "Gomma");
+                    session.setAttribute("choice",2);
+                    break;
+
+                case 6:
+                    String type = (String) request.getParameter("type");
+                    session.setAttribute("type", type);
+                    session.setAttribute("choice",1);
+                    session.setAttribute("servlet", "Gomma");
+                    break;
+
+                case 7:
+                    type = (String) request.getParameter("type");
+                    session.setAttribute("type", type);
+                    session.setAttribute("choice",2);
+                    session.setAttribute("servlet", "Gomma");
+                    break;
+
+                case 8:
+                    type = (String) request.getParameter("type");
+                    session.setAttribute("type", type);
+                    session.setAttribute("servlet", "Vehicle");
+                    break;
+
+
+            }
+        }
         HttpServlet oggettoServlet = (HttpServlet) ReflectionUtils.instantiateClass("com.virtualpairprogrammers.servlets." + session.getAttribute("servlet") + "Servlet");
 
         try
@@ -59,7 +114,8 @@ public class MainDispatcherServlet extends HttpServlet
             metodo.invoke( oggettoServlet, (HttpServletRequest) request, (HttpServletResponse)response);
         }
         catch (Throwable e) {
-            GestoreEccezioni.getInstance().gestisciEccezione(e);}
+            GestoreEccezioni.getInstance().gestisciEccezione(e);
+        }
     }
 
     public void callView(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException

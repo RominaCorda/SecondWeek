@@ -39,6 +39,26 @@ public class UserServlet extends HttpServlet {
             }
 
             case "user": {
+                switch (choice) {
+                    case 4:
+                        String username = request.getParameter("username");
+                        String password = request.getParameter("password");
+                        String firstname = request.getParameter("firstname");
+                        String lastname = request.getParameter("lastname");
+                        String dateofbirth = request.getParameter("dateofbirth");
+                        String fiscalcode = request.getParameter("fiscalcode");
+                        String businessname = request.getParameter("businessname");
+                        String vat = request.getParameter("vat");
+                        String municipality = request.getParameter("municipality");
+                        String post = request.getParameter("post");
+                        String city = request.getParameter("city");
+                        String address = request.getParameter("address");
+                        String telephone = request.getParameter("telephone");
+
+                        userService.insertUser(new User(null, username, password, firstname, lastname, dateofbirth, fiscalcode, businessname, vat, municipality, post, city, address, telephone,"user"));
+                        session.setAttribute("view", "index.jsp");
+                        MainDispatcherServlet.getInstance(request).callView(request, response);
+                }
                 break;
             }
 

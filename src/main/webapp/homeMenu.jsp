@@ -22,35 +22,34 @@
    <% String name= (String) session.getAttribute("firstname"); %>
    <%
        session.setAttribute("method", "callAction");
-       session.setAttribute("servlet", "Logout");
    %>
 
    <div style="width:350px;position:relative;top:20px;left:600px;">
        <div style="width:60px;position:relative;top:90px;left:250px;">
            <form action="MainDispatcherServlet" method="post">
-               <input type="submit" value="Logout">
+               <input type="submit" name="bott" value="Logout">
            </form>
        </div>
        <%if (role.equals("admin")){%>
        <h1>MENU ADMIN <%= name%></h1>
        <div style="width: 300px">
-           <form action="SERVLET?????????????????" method="">
+           <form action="MainDispatcherServlet" method="post">
                <fieldset>
                    <legend>Inserimento</legend>
                    <table style="width: 300px">
                        <tr>
                            <td>
-                               <input type="radio" name="inserimento" value="1"/>Inserisci gomma
+                               <input type="radio" name="sel" value="1"/>Inserisci gomma
                            </td>
                        </tr>
                        <tr>
                            <td>
-                               <input type="radio" name="inserimento" value="2"/>Inserisci veicolo
+                               <input type="radio" name="sel" value="2"/>Inserisci veicolo
                            </td>
                        </tr>
                        <tr>
                            <td align="center">
-                               <input type="submit" value="CONFERMA" align="center">
+                               <input type="submit" name="bott" value="CONFERMA" align="center">
                            </td>
                        </tr>
                    </table>
@@ -59,28 +58,28 @@
        </div>
        </br>
        <div style="width: 300px">
-           <form action="JSP????????????" method="">
+           <form action="MainDispatcherServlet" method="post">
                <fieldset>
                    <legend>Visualizza</legend>
                    <table style="width: 300px">
                        <tr>
                            <td>
-                               <input type="radio" name="visualizza" value="1"/>Visualizza gomme disponibili
+                               <input type="radio" name="sel" value="3"/>Visualizza gomme disponibili
                            </td>
                        </tr>
                        <tr>
                            <td>
-                               <input type="radio" name="visualizza" value="2"/>Visualizza utenti registrati
+                               <input type="radio" name="sel" value="4">Visualizza utenti registrati
                            </td>
                        </tr>
                        <tr>
                            <td>
-                               <input type="radio" name="visualizza" value="3"/>Visualizza veicoli registrati
+                               <input type="radio" name="sel" value="5"/>Visualizza veicoli registrati
                            </td>
                        </tr>
                        <tr>
                            <td align="center">
-                               <input type="submit" value="CONFERMA">
+                               <input type="submit" name="bott" value="CONFERMA">
                            </td>
                        </tr>
                    </table>
@@ -90,23 +89,23 @@
        <%}else if(role.equals("user")) {%>
        <h1>MENU USER <%= name%></h1>
        <div style="width: 400px">
-           <form action="SERVLET?????????????????">
+           <form action="MainDispatcherServlet" method="post">
                <fieldset>
                    <legend>Ricerca</legend>
                    <table style="width: 400px">
                        <tr>
                            <td>
-                               <input type="radio" name="visualizza" value="1" onclick="myFunction1()"/>Cerca gomma per brand
+                               <input type="radio" name="sel" value="6" onclick="myFunction1()"/>Cerca gomme per brand
                            </td>
                        </tr>
                        <tr>
                            <td>
-                               <input type="radio" name="visualizza" value="2" onclick="myFunction2()"/>Cerca gomma per dimensioni
+                               <input type="radio" name="sel" value="7" onclick="myFunction2()"/>Cerca gomme per dimensioni
                            </td>
                        </tr>
                        <tr>
                            <td>
-                               <input type="radio" name="visualizza" value="3" onclick="myFunction3()"/>Cerca brand gomma per il tuo veicolo
+                               <input type="radio" name="sel" value="8" onclick="myFunction3()"/>Cerca gomme per il tuo veicolo
                            </td>
                        </tr>
                    </table>
@@ -114,14 +113,15 @@
            </form>
        </div>
        <div id="brand" style="width: 400px">
-           <form action="SERVLET?????????????????" method="">
+           <form action="MainDispatcherServlet" method="post">
                <fieldset>
                    <legend>Cerca gomma per brand</legend>
                    <table style="width: 400px">
                        <tr>
                            <td>Tipo di veicolo</td>
                            <td>
-                               <select>
+                               <select name ="type">
+                                   <option value="0" selected>Seleziona</option>
                                    <option value="moto">Moto</option>
                                    <option value="auto">Auto</option>
                                    <option value="commerciale">Commerciale</option>
@@ -130,7 +130,7 @@
                        </tr>
                        <tr>
                            <td align="center" colspan="2">
-                               <input type="submit" value="CONFERMA">
+                               <input type="submit" name="bott" value="CONFERMA">
                            </td>
                        <tr>
                    </table>
@@ -138,14 +138,15 @@
            </form>
        </div>
        <div id="gommesize" style="width: 400px">
-           <form action="SERVLET?????????????????" method="">
+           <form action="MainDispatcherServlet" method="post">
                <fieldset>
                    <legend>Cerca gomma per dimensioni</legend>
                    <table style="width: 400px">
                        <tr>
                            <td>Tipo di veicolo</td>
                            <td>
-                               <select>
+                               <select name="type">
+                                   <option value="0" selected>Seleziona</option>
                                    <option value="moto">Moto</option>
                                    <option value="auto">Auto</option>
                                    <option value="commerciale">Commerciale</option>
@@ -177,7 +178,7 @@
                        </tr>
                        <tr>
                            <td align="center" colspan="2">
-                               <input type="submit" value="CONFERMA">
+                               <input type="submit" name="bott" value="CONFERMA">
                            </td>
                        </tr>
                    </table>
@@ -185,7 +186,7 @@
            </form>
        </div>
        <div id="vehicle" style="width: 400px">
-           <form action="SERVLET?????????????????" method="">
+           <form action="MainDispatcherServlet" method="post">
                <fieldset>
                    <legend>Cerca brand gomma per il tuo veicolo</legend>
                    <table style="width: 400px">
@@ -217,7 +218,7 @@
                        </tr>
                        <tr>
                            <td align="center" colspan="2">
-                               <input type="submit" value="CONFERMA">
+                               <input type="submit" name="bott" value="CONFERMA">
                            </td>
                        </tr>
                    </table>

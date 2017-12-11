@@ -39,9 +39,10 @@ public class LoginServlet extends HttpServlet
             }
             case "Registrati":
             {
-                /*HttpSession session = request.getSession(true);
-                session.setAttribute("view","SignedUpMenu.jsp");
-                MainDispatcherServlet.getInstance().callView(request,response);*/
+                HttpSession session = request.getSession(true);
+                session.setAttribute("mode","reg");
+                session.setAttribute("view","UserView.jsp");
+                MainDispatcherServlet.getInstance(request).callView(request,response);
             }
         }
     }

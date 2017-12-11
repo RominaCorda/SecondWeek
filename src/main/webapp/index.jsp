@@ -9,7 +9,6 @@
 	<body background="sfondo.jpg">
 		<%
            session.setAttribute("method", "callAction");
-           session.setAttribute("servlet", "Login");
 		%>
 		<div style="width:250px;position:relative;top:300px;left:730px;">
 			<form action="MainDispatcherServlet" method="post">
