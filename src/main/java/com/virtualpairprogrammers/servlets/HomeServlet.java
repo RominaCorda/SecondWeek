@@ -13,14 +13,14 @@ import java.io.PrintWriter;
 
 public class HomeServlet extends HttpServlet
 {
-    private LoginService loginService=new LoginService();
+    private LoginService loginService;
     private String result="";
 
     public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(true);
         String firstName = (String) session.getAttribute("firstname");
         String role = (String) session.getAttribute("role");
-
+        loginService =LoginService.getService();
 
         if ((request != null)&&(role== null)&&(firstName==null))
         {

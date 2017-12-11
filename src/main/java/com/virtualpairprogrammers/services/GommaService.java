@@ -11,6 +11,14 @@ public class GommaService {
 
     private GommaDAO gommaDAO;
 
+    private static GommaService reference;
+
+    public static GommaService getService() {
+        if (reference == null)
+            reference = new GommaService();
+        return reference;
+    }
+
     public GommaService() {
         this.gommaDAO = new GommaDAO();
     }
