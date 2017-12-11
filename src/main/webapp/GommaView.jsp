@@ -40,11 +40,11 @@
             {
                 case 1:
                 {
-                    session.setAttribute("sel",0);
                     session.setAttribute("choice",3);
                     %>
                  <div>
                      <form action="MainDispatcherServlet" method="post">
+                         <input type="radio" name="sel" value="0" checked="checked" hidden/>
                        <fieldset>
                        <legend align="center">Welcome project gomma</legend>
                          <table>

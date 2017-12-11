@@ -56,6 +56,11 @@
 		<servlet-class>com.virtualpairprogrammers.servlets.LogoutServlet</servlet-class>
 	</servlet>
 
+	<servlet>
+		<servlet-name>UserServlet</servlet-name>
+		<servlet-class>com.virtualpairprogrammers.servlets.UserServlet</servlet-class>
+	</servlet>
+
 	<servlet-mapping>
 		<servlet-name>HelloWorldServlet</servlet-name>
 		<url-pattern>/hello-everyone.html</url-pattern>
@@ -105,6 +110,11 @@
 	<servlet-mapping>
 		<servlet-name>LogoutServlet</servlet-name>
 		<url-pattern>/LogoutServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>UserServlet</servlet-name>
+		<url-pattern>/UserServlet</url-pattern>
 	</servlet-mapping>
 	
 	<session-config>

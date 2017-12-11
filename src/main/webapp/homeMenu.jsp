@@ -22,6 +22,7 @@
    <% String name= (String) session.getAttribute("firstname"); %>
    <%
        session.setAttribute("method", "callAction");
+       session.setAttribute("servlet","");
    %>
 
    <div style="width:350px;position:relative;top:20px;left:600px;">
@@ -32,16 +33,16 @@
        </div>
        <%if (role.equals("admin")){%>
        <h1>MENU ADMIN <%= name%></h1>
-       <div style="width: 300px">
-           <form action="MainDispatcherServlet" method="post">
-               <fieldset>
-                   <legend>Inserimento</legend>
-                   <table style="width: 300px">
-                       <tr>
-                           <td>
-                               <input type="radio" name="sel" value="1"/>Inserisci gomma
-                           </td>
-                       </tr>
+                       <div style="width: 300px">
+                           <form action="MainDispatcherServlet" method="post">
+                               <fieldset>
+                                   <legend>Inserimento</legend>
+                                   <table style="width: 300px">
+                                       <tr>
+                                           <td>
+                                               <input type="radio" name="sel" value="1"/>Inserisci gomma
+                                           </td>
+                                       </tr>
                        <tr>
                            <td>
                                <input type="radio" name="sel" value="2"/>Inserisci veicolo
@@ -49,7 +50,7 @@
                        </tr>
                        <tr>
                            <td align="center">
-                               <input type="submit" name="bott" value="CONFERMA" align="center">
+                               <input type="submit" name="bott" value="CONFERMA">
                            </td>
                        </tr>
                    </table>

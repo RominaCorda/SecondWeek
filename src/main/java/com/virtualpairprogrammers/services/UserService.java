@@ -2,14 +2,14 @@ package com.virtualpairprogrammers.services;
 
 
 
-import com.virtualpairprogrammers.dao.UserDAO;
+import com.virtualpairprogrammers.dao.UserDao;
 import com.virtualpairprogrammers.domain.User;
 
 import java.util.List;
 
 public class UserService
 {
-    private UserDAO userDao;
+    private UserDao userDao;
     private static UserService reference;
 
     public static UserService getService() {
@@ -22,7 +22,7 @@ public class UserService
 
     public UserService()
     {
-        this.userDao = new UserDAO();
+        this.userDao = new UserDao();
     }
 
     public List<User> getAllUser ()

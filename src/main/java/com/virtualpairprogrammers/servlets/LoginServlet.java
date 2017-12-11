@@ -37,6 +37,7 @@ public class LoginServlet extends HttpServlet
                 session.setAttribute("firstname",null);
                 MainDispatcherServlet.getInstance(request).callAction(request,response);
             }
+            break;
             case "Registrati":
             {
                 HttpSession session = request.getSession(true);
