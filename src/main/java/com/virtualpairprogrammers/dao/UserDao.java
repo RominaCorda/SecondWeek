@@ -2,7 +2,7 @@ package com.virtualpairprogrammers.dao;
 
 import com.virtualpairprogrammers.domain.User;
 
-//import main.controller.GestoreEccezioni;
+
 import com.virtualpairprogrammers.utils.ConnectionSingleton;
 import com.virtualpairprogrammers.utils.GestoreEccezioni;
 
