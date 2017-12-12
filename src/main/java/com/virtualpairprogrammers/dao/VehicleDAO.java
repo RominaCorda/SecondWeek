@@ -12,11 +12,11 @@ import java.util.List;
 
 public class VehicleDAO
 {
-    private String QUERY_ALL ="select * from Vehicle";
-    private String QUERY_INSERT="INSERT INTO vehicle (idVehicle,brand,model,fuel,version,capacity) VALUES (NULL,?,?,?,?,?);";
+    private final String QUERY_ALL ="select * from Vehicle";
+    private final String QUERY_INSERT="INSERT INTO vehicle (idVehicle,brand,model,fuel,version,capacity) VALUES (NULL,?,?,?,?,?);";
     public VehicleDAO() {}
 
-    public List<Vehicle> getAllvehicle()
+    public List<Vehicle> getAllVehicle()
     {
         List<Vehicle> vehicles= new ArrayList<Vehicle>();
         Connection connection = ConnectionSingleton.getInstance();
@@ -35,7 +35,10 @@ public class VehicleDAO
                 vehicles.add(new Vehicle(idVehicle,brand,model,fuel,version,capacity));
             }
         }
-        catch (SQLException e) {e.printStackTrace();}
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
         return  vehicles;
     }
     public boolean insertVehicle(Vehicle vehicle)
@@ -50,37 +53,39 @@ public class VehicleDAO
             preparedStatement.setString(3,vehicle.getFuel());
             preparedStatement.setString(4,vehicle.getVersion());
             preparedStatement.setString(5,vehicle.getCapacity());
+
             return preparedStatement.execute();
         }
-        catch (SQLException e) {
+        catch (SQLException e)
+        {
             GestoreEccezioni.getInstance().gestisciEccezione(e);
             e.printStackTrace();
             return false;
         }
 
     }
-    public Integer getIdVehicle(String brand,String model, String fuel, String version, String capacity)
-    {
-        Integer idVehicle=null;
-        String query="select idVehicle from Vehicle where brand= ? and model= ? and fuel= ? and version =? and capacity=?";
-        Connection connection=ConnectionSingleton.getInstance();
-        try
-        {
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
-
-            preparedStatement.setString(1,brand);
-            preparedStatement.setString(2,model);
-            preparedStatement.setString(3,fuel);
-            preparedStatement.setString(4,version);
-            preparedStatement.setString(5,capacity);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next())
-            {
-                idVehicle=resultSet.getInt("idVehicle");
-            }
-        }
-        catch (SQLException e) { e.printStackTrace(); }
-
-        return idVehicle;
-    }
+//    public Integer getIdVehicle(String brand,String model, String fuel, String version, String capacity)
+//    {
+//        Integer idVehicle=null;
+//        String query="select idVehicle from Vehicle where brand= ? and model= ? and fuel= ? and version =? and capacity=?";
+//        Connection connection=ConnectionSingleton.getInstance();
+//        try
+//        {
+//            PreparedStatement preparedStatement = connection.prepareStatement(query);
+//
+//            preparedStatement.setString(1,brand);
+//            preparedStatement.setString(2,model);
+//            preparedStatement.setString(3,fuel);
+//            preparedStatement.setString(4,version);
+//            preparedStatement.setString(5,capacity);
+//            ResultSet resultSet = preparedStatement.executeQuery();
+//            while (resultSet.next())
+//            {
+//                idVehicle=resultSet.getInt("idVehicle");
+//            }
+//        }
+//        catch (SQLException e) { e.printStackTrace(); }
+//
+//        return idVehicle;
+//    }
 }

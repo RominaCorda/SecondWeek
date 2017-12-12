@@ -1,3 +1,8 @@
+<%@ page import="java.util.List" %>
+<%@ page import="com.virtualpairprogrammers.domain.Vehicle" %>
+<%@ page import = "java.util.List" %>
+<%@ page import = "java.util.ArrayList" %>
+
 <%@page session="true"%>
 <!DOCTYPE html>
 <html>
@@ -6,7 +11,10 @@
         <title>Lista Veicoli </title>
     </head>
     <body>
-        <h1>Veicoli Disponibili </h1>
+    <%
+        List<Vehicle> vehicles = (List<Vehicle>)session.getAttribute("vehicles");
+    %>
+        <h1>Lista Veicoli Disponibili </h1>
         <p><i> ***** </i></p>
         <form action="******Lista******" method="post"><br><br><br><br><br>
             Inserisci Nome utente<input type="text" name="utente"><br>
